@@ -2,12 +2,30 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <title>Візуалізація енерго споживання</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="container">
+         <div id="root"></div>
+    </div>
+    
+    <footer class="footer">
+    <span>
+        <span class="alignleft">
+            Co. 2016. All rights reserved. By using the site you agree to the Terms of Service.
+        </span>
+        <span class="alignright">За підтримки
+            <a href="http://zaporizhia.solydarnist.org/">
+                <img width="50px" src="http://solydarnist.org/wp-content/uploads/2015/04/Logo_23.png"
+                     alt="За підтримки Блок Петра Порошенка «Солідарність» - Запоріжжя">
+            </a> (Запоріжжя).
+        </span>
+    </span>
+</footer>
     <script type="text/babel">
 const imgStyle = {height:'50px'};
 
@@ -51,5 +69,7 @@ ReactDOM.render(
 );
 
     </script>
+    
+
   </body>
 </html>
