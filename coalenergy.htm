@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+const imgStyle = {width:'30px',height:'30px'};
+
+function CoalBuskets(props) {
+  let images = []; 
+  
+// <!-- 1 МДж = 0,2777 кВт год , 1 кг у.т. = 29,3 МДж = 29,3*0,277 = 8,14 кВт ч, 1 відро = 12 кг = 97,6 кВт ч при Кпд = 34% 1 відро = 33 кВт ч-->
+  for (let i =0; i < Number(props.consumption) / 33; i++) {    
+    images.push(<img src="http://www.clipartkid.com/images/485/coal-bucket-picture-7L6s2Y-clipart.jpg" style={imgStyle}></img>);    
+  }
+       
+  return <div> витрати вугілля будуть: {images}</div>;
+}
+
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {consumption: '200'};
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({consumption: event.target.value});
+  }
+
+  render() {
+    return (
+       <div>   
+         <div>За місячного споживання: <input type="text" value={this.state.consumption} onChange={this.handleChange} /> <label> к Вт * год</label></div>
+         <CoalBuskets consumption ={this.state.consumption} />
+         <div>(приймаючи КПД ТЕЦ = 34%, 1 кг вугілля = 8.14 кВт * год, 1 відро = 12 кг )</div>
+       </div>      
+    );
+  }
+}
+
+ReactDOM.render(
+  <NameForm />,
+  document.getElementById('root')
+);
+
+    </script>
+  </body>
+</html>
