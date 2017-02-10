@@ -2,24 +2,64 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <title>Електроенегрія = вугілля </title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//bogdartysh.github.io/energy2coal/stylesheets/main.css" />
     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-  </head>
+	</head>
   <body>
-    <div id="root"></div>
+    
+    <nav class="navbar navbar-default navbar-static-top navbar-inverse" style="margin-bottom:0px;">
+    <div class="container">
+       <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="/"><span class="glyphicon glyphicon-home"></span> Головна</a>
+            </li>
+        </ul>
+       <ul class="nav navbar-nav navbar-right">            <li class="navbar-right">
+                <a href="https://www.facebook.com/groups/1833827353530187/"><span class="glyphicon glyphicon-book"></span> Про авторів</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+   <div class="info">
+    <p>
+       Розрахуй скільки ти б витрачав вугілля для забезпечення себе світлом
+    </p>
+   </div>    
+    <div class="container">
+         <div id="root"></div>
+    </div>
+    
+    <footer class="footer">
+    <span>
+        <span class="alignleft">
+            Co. 2017. Артюшенко Богдан.
+        </span>
+        <span class="alignright">За підтримки
+            <a href="http://zaporizhia.solydarnist.org/">
+                <img width="50px" src="http://solydarnist.org/wp-content/uploads/2015/04/Logo_23.png"
+                     alt="За підтримки Блок Петра Порошенка «Солідарність» - Запоріжжя">
+            </a> (Запоріжжя).
+        </span>
+    </span>
+</footer>
     <script type="text/babel">
-const imgStyle = {height:'70px'};
+const imgStyle = {height:'50px'};
 
 function CoalBuskets(props) {
   let images = []; 
   
-// <!-- 1 МДж = 0,2777 кВт год , 1 кг у.т. = 29,3 МДж = 29,3*0,277 = 8,14 кВт ч, 1 відро = 12 кг = 97,6 кВт ч при Кпд = 34% 1 відро = 33 кВт ч-->
-  for (let i =0; i < Number(props.consumption) / 33; i++) {    
+// <!-- 1 МДж = 0,2777 кВт год , 1 кг у.т. = 29,3 МДж = 29,3*0,277 = 8,14 кВт ч, 1 відро = 12 кг = 97,6 кВт ч при Кпд = 34% 1 відро = 33 кВт г, витрати передачі 20% - 26.5 квт г --->
+  let w = Number(props.consumption) /2.2;
+  for (let i =0; i < Number(props.consumption) / 26.5; i++) {    
     images.push(<img src="http://www.clipartkid.com/images/485/coal-bucket-picture-7L6s2Y-clipart.jpg" style={imgStyle}></img>);    
   }
        
-  return <div> витрати вугілля будуть: {images}</div>;
+  return <p> ТЕЦ потребуватиме вугілля: {w} кг <div>{images}</div></p>;
 }
 
 class NameForm extends React.Component {
@@ -39,7 +79,7 @@ class NameForm extends React.Component {
        <div>   
          <div>За місячного споживання: <input type="text" value={this.state.consumption} onChange={this.handleChange} /> <label> к Вт * год</label></div>
          <CoalBuskets consumption ={this.state.consumption} />
-         <div>(приймаючи КПД ТЕЦ = 34%, 1 кг вугілля = 8.14 кВт * год, 1 відро = 12 кг )</div>
+         <div>(приймаючи КПД ТЕЦ = 34%, 1 кг вугілля = 8.14 кВт * год, 1 відро = 12 кг, втрати передачі 20%)</div>
        </div>      
     );
   }
@@ -51,5 +91,7 @@ ReactDOM.render(
 );
 
     </script>
+    
+
   </body>
 </html>
