@@ -25,7 +25,7 @@
 
    <div class="info">
     <p>
-       Розрахуй скільки ти б витрачав вугілля для забезпечення себе світлом
+       Розрахуй скільки вугілля слід витратити на забезпечення світлом
     </p>
    </div>    
     <div class="container">
@@ -33,6 +33,7 @@
     </div>
     
     <footer class="footer">
+    <div>*(приймаючи КПД ТЕЦ = 34%, втрати передачі 20%, вугілля вже доставлено на ТЕЦ, накладні та операційні видатки не враховано, 1 кг вугілля = 8.14 кВт * год, 1 відро = 12 кг)</div>     
     <span>
         <span class="alignleft">
             Co. 2017. Артюшенко Богдан.
@@ -44,7 +45,7 @@
             </a> (Запоріжжя).
         </span>
     </span>
-</footer>
+ </footer>
     <script type="text/babel">
 const imgStyle = {height:'50px'};
 
@@ -57,7 +58,7 @@ function CoalBuskets(props) {
     images.push(<img src="http://www.clipartkid.com/images/485/coal-bucket-picture-7L6s2Y-clipart.jpg" style={imgStyle}></img>);    
   }
        
-  return <p> потреба у {w} кг вугілля <div>{images}</div></p>;
+  return <p> ТЕЦ потребуватиме : <div>{images}</div><div> ({w} кг вугілля)</div></p>;
 }
 
 class NameForm extends React.Component {
@@ -75,9 +76,13 @@ class NameForm extends React.Component {
   render() {
     return (
        <div>   
-         <div>За місячного споживання: <input type="text" value={this.state.consumption} onChange={this.handleChange} /> <label> к Вт * год</label></div>
+         <div className="form-group">
+              <label>За місячного споживання:</label>
+              <input className="form-control" type="text" value={this.state.consumption} onChange={this.handleChange} />
+              <label> к Вт * год</label>              
+         </div> 
+         
          <CoalBuskets consumption ={this.state.consumption} />
-         <div>(приймаючи КПД ТЕЦ = 34%, 1 кг вугілля = 8.14 кВт * год, 1 відро = 12 кг, втрати передачі 20%)</div>
        </div>      
     );
   }
