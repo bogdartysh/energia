@@ -59,16 +59,16 @@ function CoalBuskets(props) {
 // <!-- 1 МДж = 0,2777 кВт год , 1 кг у.т. = 29,3 МДж = 29,3*0,277 = 8,14 кВт ч, 1 відро = 12 кг = 97,6 кВт ч при Кпд = 34% 1 відро = 33 кВт г, витрати передачі 20% - 26.5 квт г --->
   let w = Math.round(Number(props.consumption) /2.2);
   if (w < 69000) {
-     for (let i =0; i < Number(props.consumption) / 26.5; i++) {    
+     for (let i =0; i < w / 12; i++) {    
        images.push(<img src="//bogdartysh.github.io/energy2coal/coal-bucket.jpg" style={imgStyle}></img>);    
      }       
      return <p> потрібно {w} кг вугілля: <div>{images}</div></p>;
   } else {
-      let wt = w / 1000;
-      for (let i =0; i < Number(props.consumption) / 69; i++) {    
+      let wt = Math.round(w / 1000) ;
+      for (let i =0; i < wt / 69; i++) {    
       images.push(<img src="//bogdartysh.github.io/energy2coal/coalwagon.jpg" style={imgStyle}></img>); 
      }
-    return <p> потрібно {wt} т вугілля: <div>{images}</div></p>;
+    return <p> потрібно {wt} т {(w - wt * 1000)} кг вугілля: <div>{images}</div></p>;
   }
 }
 
