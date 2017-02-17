@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Електроенегрія -> вугілля </title>
+    <title>Електроенегрія -> вугілля ?</title>
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="//bogdartysh.github.io/energy2coal/stylesheets/main.css" />
     <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
@@ -68,10 +68,11 @@ function CoalBuskets(props) {
         images.push(React.createElement('img', { src: containers[c].url, style: containers[c].stl }));
       }
       let imagesContainer =  React.createElement('div',null,images);
-      let wtxt = (w > 1000) ? [Math.round(w / 1000), ' т ',  w - Math.round(w / 1000) * 1000, ' кг вугілля: '] : [w, ' кг вугілля: '];
+      let wtxt = (w > 1000) ? [Math.round(w / 1000), ' т ',  w - Math.round(w / 1000) * 1000, ' кг вугілля.'] : [w, ' кг вугілля.'];
       return React.createElement(
         'p',       null,
         ' потрібно ',   wtxt,
+        React.createElement( 'div', null, 'Для транспортування потрібно:' )
         React.createElement( 'div', null, images )
        );
     }
