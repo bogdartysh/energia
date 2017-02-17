@@ -64,7 +64,7 @@ function CoalBuskets(props) {
   for (let c=0; c<containers.length; c++) {
     if (w > containers[c].w) {
       let images = [];
-      for (let i = 0; i < w / containers[c].wc; i++) {
+      for (let i = 0; i < Math.round(w / containers[c].wc); i++) {
         images.push(React.createElement('img', { src: containers[c].url, style: imgStyle }));
       }
       let imagesContainer =  React.createElement('div',null,images);
