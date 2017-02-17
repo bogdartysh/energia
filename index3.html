@@ -52,10 +52,9 @@
  </footer>
 
     <script>
-    const imgStyle = { height: '50px', margin: '3px' };
-    const containers = [{w:69000, url:'//bogdartysh.github.io/energy2coal/coalwagon.jpg',   wc:69000},
-                        {w:5000, url:'//bogdartysh.github.io/energy2coal/kraz5401c2.jpg',  wc:5000},
-                        {w:0,    url:'//bogdartysh.github.io/energy2coal/coal-bucket.jpg', wc:12}];
+const containers = [{w:69000, url:'//bogdartysh.github.io/energy2coal/coalwagon.jpg',  stl: { height: '50px', margin: '3px' }, wc:69000},
+                    {w:5000, url:'//bogdartysh.github.io/energy2coal/kraz5401c2.jpg',  stl: { height: '60px', margin: '3px' }, wc:5000},
+                    {w:0,    url:'//bogdartysh.github.io/energy2coal/coal-bucket.jpg', stl: { height: '50px', margin: '3px' }, wc:12}];
 
 function CoalBuskets(props) {
 
@@ -65,7 +64,7 @@ function CoalBuskets(props) {
     if (w > containers[c].w) {
       let images = [];
       for (let i = 0; i < Math.round(w / containers[c].wc); i++) {
-        images.push(React.createElement('img', { src: containers[c].url, style: imgStyle }));
+        images.push(React.createElement('img', { src: containers[c].url, style: containers[c].stl }));
       }
       let imagesContainer =  React.createElement('div',null,images);
       let wtxt = (w > 1000) ? [Math.round(w / 1000), ' т ',  w - Math.round(w / 1000) * 1000, ' кг вугілля: '] : [w, ' кг вугілля: '];
