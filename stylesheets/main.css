@@ -37,6 +37,6 @@ body {
 
 .container {
   width: auto;
-  max-width: 900px;
+  max-width: 80vw;
   padding: 0 15px;
 }
