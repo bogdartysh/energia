@@ -78,8 +78,9 @@ function CoalBuskets(props) {
       let wtxt = (w > 1000) ? [Math.round(w / 1000), ' т ',  w - Math.round(w / 1000) * 1000, ' кг вугілля.'] : [w, ' кг вугілля.'];
       return React.createElement(
         'p',       null,
-        ' потрібно ',   wtxt,
-        React.createElement( 'div', null, 'Для транспортування потрібно:' ),
+        ' Слід спалити  ',   wtxt,
+        React.createElement('br', null),
+        React.createElement( 'div', null, 'Це приблизно:' ),
         React.createElement( 'div', null, images )
        );
     }
