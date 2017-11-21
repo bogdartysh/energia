@@ -16,7 +16,7 @@
     <div class="container">
        <ul class="nav navbar-nav">
             <li class="active">               
-  			<a href="/energia"><span class="glyphicon glyphicon-home"></span> Розрахунок ймовірності кримінальної активності</a>
+  			<a href="/energia/index_psa.html"><span class="glyphicon glyphicon-home"></span> Розрахунок ймовірності кримінальної активності</a>
             </li>
         </ul>
        <ul class="nav navbar-nav navbar-right">            <li class="navbar-right">
@@ -58,21 +58,14 @@
        </span>
  </footer>
 
-    <script>
+<script>
 function get_fta(answers) {
-  let weights = Object.assign({}, answers);
-  
-  weights.prior_failure_to_appear_in_past_2_years = Math.max(2, weights.prior_failure_to_appear_in_past_2_years) * 2;
-  weights.age = (weights.age>23)? 0 : 2;
-  weights.prior_conviction = Math.max( weights.prior_conviction ,1);
-  weights.pending_charge = 3 * weights.pending_charge;
-  weights.violent_conviction = (weights.violent_conviction > 2)? 2 : (Math.max(1, weights.violent_conviction));
-  
-  return weights.pending_charge
-    + weights.prior_conviction
-	+ weights.prior_failure_to_appear_pretrial_in_past_2_years
-	+ weights.prior_failure_to_appear
-	-1;
+  return 0
+    + answers.pending_charge * 1
+    + Math.min(1, answers.prior_conviction)
+	+ Math.min(4, answers.prior_failure_to_appear_pretrial_in_past_2_years * 2)
+	+ Math.min(1, answers.prior_failure_to_appear)
+	;
 }
 
 function CoalBuskets(props) {
@@ -82,7 +75,7 @@ function CoalBuskets(props) {
   return React.createElement(
         'p',       null,        
         React.createElement('br', null),
-        React.createElement( 'div', null, 'Ймовірність не явки до суду :' + fta_text + '(' + fta + ' з 7)'),
+        React.createElement( 'div', null, 'Ймовірність не явки до суду: ' + fta_text + ' (' + fta + ' з 7)'),
        );  
 }
 
@@ -91,21 +84,20 @@ class NameForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {			  
-	  pending_charge: 0 
-	  , age: 18
+	  pending_charge: false 
 	  , prior_conviction: 0
 	  , prior_failure_to_appear: 0
 	  , prior_failure_to_appear_pretrial_in_past_2_years: 0
 	};
 
-    this.handleAgeChange = this.handleAgeChange.bind(this);
+    this.handlePendingChange = this.handlePendingChange.bind(this);
 	this.handlePriorconvictionChange = this.handlePriorconvictionChange.bind(this);
 	this.handlePriorFailureToAppearPretrialChange = this.handlePriorFailureToAppearPretrialChange.bind(this);
 	this.handlePriorFailureToAppearPretrialInPast2YearsChange = this.handlePriorFailureToAppearPretrialInPast2YearsChange.bind(this);
   }
 
-  handleAgeChange(event) {
-    this.setState({ age: event.target.value });
+  handlePendingChange(event) {
+    this.setState({pending_charge: ! (this.state.pending_charge)});
   }
   
   handlePriorconvictionChange(event) {
@@ -130,15 +122,17 @@ class NameForm extends React.Component {
         React.createElement(
           'p',
           null,
-          'Вік (в роках):'
+          'Вже має невиконані покарання (включаючі адміністративні):'
         ),
         React.createElement(
           'span',
           null,
-          React.createElement('input', { type: 'number', inputmode: "numeric", value: this.state.age, onChange: this.handleAgeChange })          
+          React.createElement('input', { type: 'checkbox',
+		    value: this.state.pending_charge, 
+			onChange: this.handlePendingChange })          
         )
       ),
-	  	React.createElement(
+	  React.createElement(
         'p',
         null,
         React.createElement(
@@ -150,16 +144,16 @@ class NameForm extends React.Component {
           'span',
           null,
           React.createElement('input', { type: 'number', inputmode: "numeric", value: this.state.prior_conviction,
-		    onChange: this.hadlePriorconvictionChange })          
+		    onChange: this.handlePriorconvictionChange })          
         )
-        ),
-	  	  React.createElement(
+      ),
+	  React.createElement(
         'p',
         null,
         React.createElement(
           'p',
           null,          
-		  'Скільки раз не зявлявся у суді (загалом):'
+		  'Скільки раз не з\'являвся у суді більш ніж два роки тому:'
         ),
         React.createElement(
           'span',
@@ -167,8 +161,8 @@ class NameForm extends React.Component {
           React.createElement('input', { type: 'number', inputmode: "numeric", value: this.state.prior_failure_to_appear
 		  , onChange: this.handlePriorFailureToAppearPretrialChange })          
         )
-      ),
-	  React.createElement(
+       ),
+	   React.createElement(
         'p',
         null,
         React.createElement(
@@ -191,7 +185,7 @@ class NameForm extends React.Component {
 
 ReactDOM.render(React.createElement(NameForm, null), document.getElementById('root'));
 </script>
-  </body>
+</body>
 </html>
 
     
