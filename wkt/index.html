@@ -20,7 +20,13 @@
                           "LINESTRING (-70.3764 -18.3506, -70.36948 -18.34094, -70.36277 -18.33377, -70.35619 -18.32807, -70.34925 -18.32336, -70.34269 -18.31949, -70.33627 -18.31624, -70.32741 -18.3125, -70.32558 -18.31201)"
                           />
                           <br/>
+                          <div>
+                          <label for="zoom">Zoom :</label>
+                          <input type="number" id="zoom" min="0" max="100"  value="2" >                    
+                    </div>
+                    <div>
                           <button onclick='reRender()'>Re-Render Geometry</button>
+                    </div>
                   </div>
           </div>
 
@@ -36,13 +42,19 @@
 
                 function reRender() {
                         map.clearContent();
-
-                        let geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").value);
-
-                        map.setCenter(geo.getBounds().getCenter());
-                        map.setZoom(-2.718 *Math.log2(0.5 * (geo.getBounds().getHeight() + geo.getBounds().getWidth())));
-
                         map.removeObjects(map.getObjects());
+
+                        var geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").value);
+                        
+                        let z = document.getElementById("zoom").value;
+                        if (z == 0 || z == "0")
+                          map.setZoom(-2.718 * Math.log2(0.5 * (geo.getBounds().getHeight() + geo.getBounds().getWidth())));
+                        else
+                          map.setZoom(z);
+                        map.setCenter(geo.getBounds().getCenter());
+                        
+
+                        
 
                         try { map.addObject(new H.map.Marker(geo)); } catch (e) {}
                         try { map.addObject(new H.map.Polyline(geo));} catch (e) {}
