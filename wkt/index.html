@@ -21,8 +21,8 @@
                           />
                           <br/>
                           <div>
-                          <label for="zoom">Zoom :</label>
-                          <input type="number" id="zoom" min="0" max="100"  value="0" >                    
+                          <label for="zoom">Zoom:</label>
+                          <input type="number" id="zoom" min="0" max="40"  value="0" title="zoom level, 0 - autoscale" >               
                           <button onclick='reRender()'>Re-Render Geometry</button>
                     </div>
                   </div>
@@ -45,8 +45,8 @@
                         var geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").value);
                         
                         let z = document.getElementById("zoom").value;
-                        if (z == 0 || z == "0")
-                          map.setZoom(-2.718 * Math.log2(0.5 * (geo.getBounds().getHeight() + geo.getBounds().getWidth())));
+                        if (z == 0 || z == "0") 
+                          map.setZoom(-2.718 * Math.log2(0.5 * (geo.getBounds().getHeight() + geo.getBounds().getWidth())));                          
                         else
                           map.setZoom(z);
                         map.setCenter(geo.getBounds().getCenter());
