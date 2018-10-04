@@ -42,7 +42,7 @@
                         map.clearContent();
                         map.removeObjects(map.getObjects());
 
-                        var geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").value);
+                        var geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").textContent);
                         
                         let z = document.getElementById("zoom").value;
                         if (z == 0 || z == "0") 
