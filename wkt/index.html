@@ -6,6 +6,22 @@
   <meta charset="utf-8"/>
   <script src="//js.api.here.com/v3/3.0/mapsjs-core.js"  type="text/javascript" charset="utf-8"></script>
   <script src="//js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+    flex: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+</style>
   </head>
   <body>
      <div class="info">
@@ -13,8 +29,8 @@
       Online <a href="https://en.wikipedia.org/wiki/Well-known_text">WKT</a> viewer on wego.here.com map
     </p>
 </div> 
-          <div class="container" >                  
-                  <div class="inpt" >
+          <div class="row" >                  
+                  <div class="column" >
                           <textarea type="text" id="inptWkt" style="width: 600px; height: 100px">
                           LINESTRING (-70.3764 -18.3506, -70.36948 -18.34094, -70.36277 -18.33377, -70.35619 -18.32807, -70.34925 -18.32336, -70.34269 -18.31949, -70.33627 -18.31624, -70.32741 -18.3125, -70.32558 -18.31201)
                           </textarea>
@@ -24,7 +40,9 @@
                           <input type="number" id="zoom" min="0" max="40"  value="0" title="zoom level, 0 - autoscale" >               
                           <button onclick='reRender()'>Re-Render Geometry</button>
                     </div>
-                    <div style="width: 640px; height: 480px" id="mapContainer"></div>
+                    <div class="column">
+                        <div style="width: 640px; height: 480px" id="mapContainer"></div>
+                    </div>
                   </div>
           </div>
 
