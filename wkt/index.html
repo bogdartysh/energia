@@ -78,7 +78,7 @@
 
                         try { map.addObject(new H.map.Marker(geo)); return 1;} catch (e) {console.log(e);}
                         try { map.addObject(new H.map.Polyline(geo)); return 2;} catch (e) {console.log(e);}
-                        try { map.addObject(new H.map.Polygon(geo, {style: {lineWidth:8}})); return 3;} catch (e) {console.log(e);}
+                        try { map.addObject(new H.map.Polygon(geo)); return 3;} catch (e) {console.log(e);}
                 }
                 reRender();
   </script>
