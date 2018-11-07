@@ -72,9 +72,9 @@
 
                         
 
-                        try { map.addObject(new H.map.Marker(geo)); } catch (e) {}
-                        try { map.addObject(new H.map.Polyline(geo));} catch (e) {}
-                        try { map.addObject(new H.map.Polygone(geo));} catch (e) {}
+                        try { map.addObject(new H.map.Marker(geo)); } catch (e) {console.log(e);}
+                        try { map.addObject(new H.map.Polyline(geo));} catch (e) {console.log(e);}
+                        try { map.addObject(new H.map.Polygone(geo, {style: {lineWidth:8}}));} catch (e) {console.log(e);}
                 }
                 reRender();
   </script>
