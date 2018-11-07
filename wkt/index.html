@@ -62,19 +62,19 @@
 
                         var geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").value.trim());
                         
-                        let z = document.getElementById("zoom").value;
+            /*            let z = document.getElementById("zoom").value;
                         if (z == 0 || z == "0") 
                           map.setZoom(-2.718 * Math.log2(0.5 * (geo.getBounds().getHeight() + geo.getBounds().getWidth())));                          
                         else
                           map.setZoom(z);
                         map.setCenter(geo.getBounds().getCenter());
                         
-
+*/
                         
 
-                        try { map.addObject(new H.map.Marker(geo)); } catch (e) {console.log(e);}
-                        try { map.addObject(new H.map.Polyline(geo));} catch (e) {console.log(e);}
-                        try { map.addObject(new H.map.Polygon(geo, {style: {lineWidth:8}}));} catch (e) {console.log(e);}
+                        try { map.addObject(new H.map.Marker(geo)); return 1;} catch (e) {console.log(e);}
+                        try { map.addObject(new H.map.Polyline(geo)); return 2;} catch (e) {console.log(e);}
+                        try { map.addObject(new H.map.Polygon(geo, {style: {lineWidth:8}})); return 3;} catch (e) {console.log(e);}
                 }
                 reRender();
   </script>
