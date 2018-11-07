@@ -55,21 +55,22 @@
                           useHTTPS: true
                         }).createDefaultLayers().normal.map
                 );
+                var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
                 function reRender() {
                         map.clearContent();
                         map.removeObjects(map.getObjects());
 
-                        var geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").value.trim());
+                        let geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").value.trim());
                         
-            /*            let z = document.getElementById("zoom").value;
+                        let z = document.getElementById("zoom").value;
                         if (z == 0 || z == "0") 
                           map.setZoom(-2.718 * Math.log2(0.5 * (geo.getBounds().getHeight() + geo.getBounds().getWidth())));                          
                         else
                           map.setZoom(z);
                         map.setCenter(geo.getBounds().getCenter());
                         
-*/
+
                         
 
                         try { map.addObject(new H.map.Marker(geo)); return 1;} catch (e) {console.log(e);}
