@@ -38,9 +38,7 @@
                           LINESTRING (-70.3764 -18.3506, -70.36948 -18.34094, -70.36277 -18.33377, -70.35619 -18.32807, -70.34925 -18.32336, -70.34269 -18.31949, -70.33627 -18.31624, -70.32741 -18.3125, -70.32558 -18.31201)
                           </textarea>
                           <br/>
-                          <div>
-                          <label for="zoom">Zoom:</label>
-                          <input type="number" id="zoom" min="0" max="40"  value="0" title="zoom level, 0 - autoscale" >               
+                          <div>         
                           <button onclick='reRender()'>Re-Render Geometry</button>
                     </div>
                     <div class="column">
@@ -59,27 +57,30 @@
                         }).createDefaultLayers().normal.map
                 );
                 var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-
+          
                 function reRender() {
                         map.clearContent();
                         map.removeObjects(map.getObjects());
 
                         let geo = H.util.wkt.toGeometry(document.getElementById("inptWkt").value.trim());
                         
-                        let z = document.getElementById("zoom").value;
-                        if (z == 0 || z == "0") 
-                          map.setZoom(-2.718 * Math.log2(0.5 * (geo.getBounds().getHeight() + geo.getBounds().getWidth())));                          
-                        else
-                          map.setZoom(z);
-                        map.setCenter(geo.getBounds().getCenter());
-                        
-
-                        
+                        map.setZoom(-2.718 * Math.log2(0.5 * (geo.getBounds().getHeight() + geo.getBounds().getWidth())));                                            
+                        map.setCenter(geo.getBounds().getCenter());                       
+                       
 
                         try { map.addObject(new H.map.Marker(geo)); return 1;} catch (e) {console.log(e);}
                         try { map.addObject(new H.map.Polyline(geo)); return 2;} catch (e) {console.log(e);}
                         try { map.addObject(new H.map.Polygon(geo)); return 3;} catch (e) {console.log(e);}
                 }
+          
+                if (!(!window.location.search )) {
+                  let s = new URLSearchParams(window.location.search);
+                  let wkt = s.get('wkt');
+                  if (!(!wkt)) {
+                    document.getElementById("inptWkt").value = unescape(wkt);
+                  }
+                }
+          
                 reRender();
   </script>
   </body>
