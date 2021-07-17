@@ -42,6 +42,11 @@
                         </tr>
                         <tr>
                             <td>загальна інфо</td>
+                            <td>дата народження</td>
+                            <td><span className="zagalna-data-narodgenia">{this.state["zagalna-data-narodgenia"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>загальна інфо</td>
                             <td>стать</td>
                             <td><span className="zagalna-stat">{this.state["zagalna-stat"]}</span></td>
                         </tr>
