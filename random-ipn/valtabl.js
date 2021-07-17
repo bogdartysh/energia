@@ -31,14 +31,19 @@
                             <td><span className="podatkova-kved">{this.state["podatkova-kved"]}</span></td>
                         </tr>
                         <tr>
-                            <td>податкова інво</td>
+                            <td>податкова інфо</td>
                             <td>група платника податків (СПД)</td>
                             <td><span className="podatkova-grupa-spd">{this.state["podatkova-grupa-spd"]}</span></td>
                         </tr>
                         <tr>
                             <td>загальна інфо</td>
-                            <td>Унікальний номер запису у Єдиному державному демографічному реєстрі</td>
+                            <td>унікальний номер запису у Єдиному державному демографічному реєстрі</td>
                             <td><span className="zagalna-demindex">{this.state["zagalna-demindex"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>загальна інфо</td>
+                            <td>стать</td>
+                            <td><span className="zagalna-stat">{this.state["zagalna-stat"]}</span></td>
                         </tr>
                         <tr>
                             <td>загальна інфо</td>
