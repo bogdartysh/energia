@@ -78,6 +78,7 @@ function get_random_state() {
         "propiska-zip": make_digits(5),
         "prozhyvania-zip": make_digits(5),
         "contactna-telefon": "+380" + make_digits(9),
+        "zagalna-data-narodgenia": dob.toISOString().substr(0,10),
         "zagalna-demindex": make_dem_index(dob),
         "zagalna-vaga": 50 + Math.round(100 * Math.random()),
         "zagalna-stat": get_sex(ipn),
