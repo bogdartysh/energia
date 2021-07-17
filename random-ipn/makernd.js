@@ -33,10 +33,8 @@ function make_taxcode_fiz(dob) {
 }
 
 function make_dem_index(dob) {
-    let dd = ((dob.getDate() < 10) ? '0' : '') + dob.getDate().toString()
-    let mm = ((dob.getMonth()+1 < 10) ? '0' : '') + (1 + dob.getMonth()).toString();
-    let di = dob.getFullYear().toString() + mm+ dd + make_digits(4);
-    let arr = di.toString(10).replace(/\D/g, '0').split('').map(Number)
+    let di = dob.toISOString().substr(0,10).replaceAll("-","") + make_digits(4);
+    let arr = di.toString(10).replace(/\D/g, '0').split('').map(Number);
     let cn = (7 + 3 + 1 + 7 + 3 + 1 + arr.reduce((a,b) => a + b)) % 10;
     return di.substr(0, 8) + "-" + di.substr(8) + (cn.toString());
 }
