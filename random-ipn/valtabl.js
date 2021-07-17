@@ -16,7 +16,7 @@
                         <tr>
                             <th>БЛОК</th>
                             <th>КЛЮЧ</th>
-                            <th>ЗНАЧЕННЯ</th>
+                            <th>ЗНАЧЕННЯ <button onClick={this.nextRandomState}>(ОНОВИТИ)</button></th>
                         </tr>
                         </thead>
                         <tbody>
