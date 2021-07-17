@@ -12,6 +12,11 @@
             render() {
                 return <div>
                     <table className="table table-striped thead-dark">
+                        <colgroup>
+                            <col/>
+                            <col/>
+                            <col style={{width: "33%"}}/>
+                        </colgroup>
                         <thead>
                         <tr>
                             <th>БЛОК</th>
