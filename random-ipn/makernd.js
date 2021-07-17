@@ -58,8 +58,13 @@ function get_id_place() {
     return cities_id[Math.round(Math.random() * cities_id.length) % cities_id.length];
 }
 
+function get_sex(ipn) {
+    return ["Ж", "Ч"][Math.floor((ipn %100) /10) %2]
+}
+
 function get_random_state() {
     let dob = new Date((Date.now() - 18*365*24*60*60*1000)*Math.random());
+    let ipn = make_taxcode_fiz(dob);
 
     return {
         email: make_alphas(3 + Math.random() * 20) + "@example.com",
@@ -69,12 +74,13 @@ function get_random_state() {
         "id-card-nomer": make_digits(13),
         "podatkova-kved": make_kved(),
         "podatkova-grupa-spd": 1 + Math.round(2 * Math.random()),
-        "podatkova-taxcode": make_taxcode_fiz(dob),
+        "podatkova-taxcode": ipn,
         "propiska-zip": make_digits(5),
         "prozhyvania-zip": make_digits(5),
         "contactna-telefon": "+380" + make_digits(9),
         "zagalna-demindex": make_dem_index(dob),
         "zagalna-vaga": 50 + Math.round(100 * Math.random()),
+        "zagalna-stat": get_sex(ipn),
         "zagalna-zrist": 150 + Math.round(50 * Math.random()),
         "zakordonnyi-card-nomer": make_ALPHAS(2) + make_digits(6),
         "zakordonnyi-data-misce-vydachi": get_zakordon_place(),
