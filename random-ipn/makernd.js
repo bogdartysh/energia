@@ -60,11 +60,20 @@ function get_sex(ipn) {
     return ["Ж", "Ч"][Math.floor((ipn %100) /10) %2]
 }
 
+function make_iban() {
+    
+   let mfo = make_digits(6);
+   let rahunok = make_digits(19);
+   let cc = (97+1) - Number(mfo+rahunok)*100%97;
+   return 'UA'+mfo+rahunok + ((cc < 9)> '0' : '') + cc;
+}
+
 function get_random_state() {
     let dob = new Date((Date.now() - 18*365*24*60*60*1000)*Math.random());
     let ipn = make_taxcode_fiz(dob);
 
     return {
+        "bank-iban": make_iban(),
         email: make_alphas(3 + Math.random() * 20) + "@example.com",
         "id-card-data-vydachi": make_data_vydachi(),
         "id-card-data-organ-vydachi": make_digits(4),
@@ -72,6 +81,7 @@ function get_random_state() {
         "id-card-nomer": make_digits(13),
         "podatkova-kved": make_kved(),
         "podatkova-grupa-spd": 1 + Math.round(2 * Math.random()),
+        "pensiinyi-nomer-soc-strah": make_digits(10),
         "podatkova-taxcode": ipn,
         "propiska-zip": make_digits(5),
         "prozhyvania-zip": make_digits(5),
