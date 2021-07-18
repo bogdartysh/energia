@@ -73,7 +73,7 @@
                         <tr>
                             <td>контактна інфо</td>
                             <td>email</td>
-                            <td><span className="contactna-email">{this.state.email}</span></td>
+                            <td><span className="contactna-email">{this.state["email"]}</span></td>
                         </tr>
                         <tr>
                             <td>паспорт у вигляді ід-карти</td>
@@ -134,10 +134,19 @@
                             <td>платіжна інфо</td>
                             <td>IBAN</td>
                             <td><span className="bank-iban">{this.state["bank-iban"]}</span></td>
+                        </tr> 
+                        <tr>
+                            <td>платіжна інфо</td>
+                            <td>Mastercard</td>
+                            <td><span className="bank-mastercard">{this.state["bank-mastercard"]}</span></td>
+                        </tr> 
+                        <tr>
+                            <td>платіжна інфо</td>
+                            <td>Visa</td>
+                            <td><span className="bank-visa">{this.state["bank-visa"]}</span></td>
                         </tr>   
                         </tbody>
                     </table >
-                    <button onClick={this.nextRandomState}>ОНОВИТИ</button>
                 </div>;
             }
         }

@@ -40,7 +40,7 @@ class ValuesTable extends React.Component {
       className: "contactna-telefon"
     }, this.state["contactna-telefon"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "email"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "contactna-email"
-    }, this.state.email))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u0430\u0441\u043F\u043E\u0440\u0442 \u0443 \u0432\u0438\u0433\u043B\u044F\u0434\u0456 \u0456\u0434-\u043A\u0430\u0440\u0442\u0438"), /*#__PURE__*/React.createElement("td", null, "\u043D\u043E\u043C\u0435\u0440"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+    }, this.state["email"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u0430\u0441\u043F\u043E\u0440\u0442 \u0443 \u0432\u0438\u0433\u043B\u044F\u0434\u0456 \u0456\u0434-\u043A\u0430\u0440\u0442\u0438"), /*#__PURE__*/React.createElement("td", null, "\u043D\u043E\u043C\u0435\u0440"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "id-card-nomer"
     }, this.state["id-card-nomer"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u0430\u0441\u043F\u043E\u0440\u0442 \u0443 \u0432\u0438\u0433\u043B\u044F\u0434\u0456 \u0456\u0434-\u043A\u0430\u0440\u0442\u0438"), /*#__PURE__*/React.createElement("td", null, "\u0434\u0430\u0442\u0430 \u0432\u0438\u0434\u0430\u0447\u0456"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "id-card-data-vydachi"
@@ -64,9 +64,11 @@ class ValuesTable extends React.Component {
       className: "pensiinyi-nomer-soc-strah"
     }, this.state["pensiinyi-nomer-soc-strah"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u043B\u0430\u0442\u0456\u0436\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "IBAN"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "bank-iban"
-    }, this.state["bank-iban"]))))), /*#__PURE__*/React.createElement("button", {
-      onClick: this.nextRandomState
-    }, "\u041E\u041D\u041E\u0412\u0418\u0422\u0418"));
+    }, this.state["bank-iban"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u043B\u0430\u0442\u0456\u0436\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "Mastercard"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bank-mastercard"
+    }, this.state["bank-mastercard"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u043B\u0430\u0442\u0456\u0436\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "Visa"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bank-visa"
+    }, this.state["bank-visa"]))))));
   }
 
 }
