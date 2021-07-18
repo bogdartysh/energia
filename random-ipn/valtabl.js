@@ -125,6 +125,16 @@
                             <td>поштовий індекс</td>
                             <td><span className="prozhyvania-zip">{this.state["prozhyvania-zip"]}</span></td>
                         </tr>
+                        <tr>
+                            <td>пенсійна/сос інфо</td>
+                            <td>номер соціального страхування</td>
+                            <td><span className="pensiinyi-nomer-soc-strah">{this.state["pensiinyi-nomer-soc-strah"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>платіжна інфо</td>
+                            <td>IBAN</td>
+                            <td><span className="bank-iban">{this.state["bank-iban"]}</span></td>
+                        </tr>   
                         </tbody>
                     </table >
                     <button onClick={this.nextRandomState}>ОНОВИТИ</button>
