@@ -126,7 +126,7 @@
                             <td><span className="prozhyvania-zip">{this.state["prozhyvania-zip"]}</span></td>
                         </tr>
                         <tr>
-                            <td>пенсійна/сос інфо</td>
+                            <td>пенсійна/соц інфо</td>
                             <td>номер соціального страхування</td>
                             <td><span className="pensiinyi-nomer-soc-strah">{this.state["pensiinyi-nomer-soc-strah"]}</span></td>
                         </tr>
