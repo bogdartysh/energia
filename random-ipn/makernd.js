@@ -68,14 +68,38 @@ function make_iban() {
    return 'UA'+mfo+rahunok + ((cc < 9)? '0' : '') + cc;
 }
 
+function make_card (beginning, lenght) {
+ console.log(lenght + "- " + beginning.toString().length);
+let vl  = lenght -  beginning.toString().length - 	1;
+console.log(vl);
+  let value = beginning + make_digits(vl);
+console.log(value);
+  // The Luhn Algorithm. It's so pretty.
+	let nCheck = 0, bEven = true;
+	value = value.replace(/\D/g, "");
+
+	for (var n = value.length - 1; n >= 0; n--) {
+		var cDigit = value.charAt(n),
+			  nDigit = parseInt(cDigit, 10);
+
+		if (bEven && (nDigit *= 2) > 9) nDigit -= 9;
+
+		nCheck += nDigit;
+		bEven = !bEven;
+	}
+
+   let cc = 10 - (nCheck %10);
+   return  value + cc.toString();
+}
+
 function get_random_state() {
     let dob = new Date((Date.now() - 18*365*24*60*60*1000)*Math.random());
     let ipn = make_taxcode_fiz(dob);
 
     return {
         "bank-iban": make_iban(),
-        "bank-mastercard": '5' + makernd('12345', 1) +  make_digits(16-2),
-        "bank-visa": '4' + make_digits(16-1),
+        "bank-mastercard": make_card('5' + makernd('12345', 1), 16),
+        "bank-visa": make_card('4', 16),
         "email": make_alphas(3 + Math.random() * 20) + "@example.com",
         "id-card-data-vydachi": make_data_vydachi(),
         "id-card-data-organ-vydachi": make_digits(4),
