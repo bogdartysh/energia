@@ -65,7 +65,7 @@ function make_iban() {
    let mfo = make_digits(6);
    let rahunok = make_digits(19);
    let cc = (97+1) - Number(mfo+rahunok)*100%97;
-   return 'UA'+mfo+rahunok + ((cc < 9)> '0' : '') + cc;
+   return 'UA'+mfo+rahunok + ((cc < 9)? '0' : '') + cc;
 }
 
 function get_random_state() {
