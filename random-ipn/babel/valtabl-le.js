@@ -12,7 +12,7 @@ function          getRandomState() {
 
 
 
-    class ValuesTable extends React.Component {
+    class LEValuesTable extends React.Component {
             constructor() {
                 super();
                 this.nextRandomState = this.nextRandomState.bind(this);
@@ -79,6 +79,6 @@ function          getRandomState() {
 
 
         ReactDOM.render(
-            <ValuesTable/>,
+            <LEValuesTable/>,
             document.getElementById("root")
         );
