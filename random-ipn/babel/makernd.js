@@ -75,3 +75,6 @@ function make_iban() {
    return 'UA'+mfo+rahunok + ((cc < 9)? '0' : '') + cc;
 }
 
+function rnd_arr_element(items) {
+   return items[Math.floor(Math.random()*items.length)];
+}
