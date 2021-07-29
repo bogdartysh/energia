@@ -30,7 +30,7 @@ function get_random_state() {
         "zakordonnyi-data-organ-vydachi": make_digits(4),
         "zakordonnyi-data-vydachi": make_data_vydachi()
     };
-}        
+}   ;     
 
 class ValuesTable extends React.Component {
             constructor() {
