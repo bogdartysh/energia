@@ -88,12 +88,12 @@ class ValuesTable extends React.Component {
                         </tr>
                         <tr>
                             <td>загальна інфо</td>
-                            <td>ім'я</td>
+                            <td>по батькові</td>
                             <td><span className="zagalna-secondname-ukr">{this.state["zagalna-secondname-ukr"]}</span></td>
                         </tr>
                         <tr>
                             <td>загальна інфо</td>
-                            <td>ім'я</td>
+                            <td>прізвище</td>
                             <td><span className="zagalna-lastname-ukr">{this.state["zagalna-lastname-ukr"]}</span></td>
                         </tr>
                         <tr>
