@@ -1,5 +1,41 @@
 "use strict";
 
+function get_random_state() {
+  let dob = new Date((Date.now() - 18 * 365 * 24 * 60 * 60 * 1000) * Math.random());
+  let ipn = make_taxcode_fiz(dob);
+  return {
+    "bank-iban": make_iban(),
+    "bank-mastercard": '5' + makernd('12345', 1) + make_digits(16 - 2),
+    "bank-visa": '4' + make_digits(16 - 1),
+    "email": make_alphas(3 + Math.random() * 20) + "@example.com",
+    "id-card-data-vydachi": make_data_vydachi(),
+    "id-card-data-organ-vydachi": make_digits(4),
+    "id-card-data-misce-vydachi": get_id_place(),
+    "id-card-nomer": make_digits(13),
+    "podatkova-kved": make_digits(2) + "." + make_digits(2),
+    "podatkova-grupa-spd": 1 + Math.round(2 * Math.random()),
+    "pensiinyi-nomer-soc-strah": make_digits(10),
+    "podatkova-taxcode": ipn,
+    "propiska-zip": make_digits(5),
+    "prozhyvania-zip": make_digits(5),
+    "contactna-telefon": "+380" + make_digits(9),
+    "zagalna-data-narodgenia": dob.toISOString().substr(0, 10),
+    "zagalna-demindex": make_dem_index(dob),
+    "zagalna-firstname-ukr": rnd_arr_element(names["ім'я"][get_sex(ipn)]),
+    "zagalna-secondname-ukr": rnd_arr_element(names["по-батькові"][get_sex(ipn)]),
+    "zagalna-lastname-ukr": rnd_arr_element(names["прізвище"][get_sex(ipn)]),
+    "zagalna-vaga": 50 + Math.round(100 * Math.random()),
+    "zagalna-stat": get_sex(ipn),
+    "zagalna-zrist": 150 + Math.round(50 * Math.random()),
+    "zakordonnyi-card-nomer": make_ALPHAS(2) + make_digits(6),
+    "zakordonnyi-data-misce-vydachi": get_zakordon_place(),
+    "zakordonnyi-data-organ-vydachi": make_digits(4),
+    "zakordonnyi-data-vydachi": make_data_vydachi()
+  };
+}
+
+;
+
 class ValuesTable extends React.Component {
   constructor() {
     super();
@@ -28,7 +64,13 @@ class ValuesTable extends React.Component {
       className: "podatkova-grupa-spd"
     }, this.state["podatkova-grupa-spd"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u0443\u043D\u0456\u043A\u0430\u043B\u044C\u043D\u0438\u0439 \u043D\u043E\u043C\u0435\u0440 \u0437\u0430\u043F\u0438\u0441\u0443 \u0443 \u0404\u0434\u0438\u043D\u043E\u043C\u0443 \u0434\u0435\u0440\u0436\u0430\u0432\u043D\u043E\u043C\u0443 \u0434\u0435\u043C\u043E\u0433\u0440\u0430\u0444\u0456\u0447\u043D\u043E\u043C\u0443 \u0440\u0435\u0454\u0441\u0442\u0440\u0456"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "zagalna-demindex"
-    }, this.state["zagalna-demindex"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u0434\u0430\u0442\u0430 \u043D\u0430\u0440\u043E\u0434\u0436\u0435\u043D\u043D\u044F"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+    }, this.state["zagalna-demindex"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u0456\u043C'\u044F"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "zagalna-firstname-ukr"
+    }, this.state["zagalna-firstname-ukr"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u043F\u043E \u0431\u0430\u0442\u044C\u043A\u043E\u0432\u0456"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "zagalna-secondname-ukr"
+    }, this.state["zagalna-secondname-ukr"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u043F\u0440\u0456\u0437\u0432\u0438\u0449\u0435"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "zagalna-lastname-ukr"
+    }, this.state["zagalna-lastname-ukr"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u0434\u0430\u0442\u0430 \u043D\u0430\u0440\u043E\u0434\u0436\u0435\u043D\u043D\u044F"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "zagalna-data-narodgenia"
     }, this.state["zagalna-data-narodgenia"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u0441\u0442\u0430\u0442\u044C"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "zagalna-stat"
