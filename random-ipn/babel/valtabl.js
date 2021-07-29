@@ -22,6 +22,8 @@ function get_random_state() {
         "zagalna-data-narodgenia": dob.toISOString().substr(0,10),
         "zagalna-demindex": make_dem_index(dob),
         "zagalna-firstname-ukr": rnd_arr_element(names["ім'я"][get_sex(ipn)]),
+        "zagalna-secondname-ukr": rnd_arr_element(names["по-батькові"][get_sex(ipn)]),
+        "zagalna-lastname-ukr": rnd_arr_element(names["прізвище"][get_sex(ipn)]),
         "zagalna-vaga": 50 + Math.round(100 * Math.random()),
         "zagalna-stat": get_sex(ipn),
         "zagalna-zrist": 150 + Math.round(50 * Math.random()),
@@ -83,6 +85,16 @@ class ValuesTable extends React.Component {
                             <td>загальна інфо</td>
                             <td>ім'я</td>
                             <td><span className="zagalna-firstname-ukr">{this.state["zagalna-firstname-ukr"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>загальна інфо</td>
+                            <td>ім'я</td>
+                            <td><span className="zagalna-secondname-ukr">{this.state["zagalna-secondname-ukr"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>загальна інфо</td>
+                            <td>ім'я</td>
+                            <td><span className="zagalna-lastname-ukr">{this.state["zagalna-lastname-ukr"]}</span></td>
                         </tr>
                         <tr>
                             <td>загальна інфо</td>
