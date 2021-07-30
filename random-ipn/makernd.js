@@ -49,10 +49,18 @@ function make_kved() {
 
 function make_taxcode_fiz(dob) {
     let ipn = Math.ceil((dob - new Date('1899-12-31T23:59:59'))/(1000*60*60*24))+make_digits(4);
-    let arr = ipn.toString(10).replace(/\D/g, '0').split('').map(Number)
+    let arr = ipn.toString(10).replace(/\D/g, '0').split('').map(Number);
     let c = arr[0] *(-1) + arr[1]*5+arr[2]*7+arr[3]*9+arr[4]*4+arr[5]*6+arr[6]*10+arr[7]*5+arr[8]*7;
     let cn = (c%11 > 9) ? (c%11 - 10) : c%11;
     return ipn + (cn)
+}
+
+function make_edrpou() {
+   let wc = Math.trunc(Math.random() * 3) + make_digits(8-1-1);
+   let arr = wc.toString(10).replace(/\D/g, '0').split('').map(Number);
+   let cn = (arr[0]*1+arr[1]*2+arr[2]*3+arr[3]*4+arr[4]*5+arr[5]*6+arr[6]*7)%11;
+   if (cn < 10) return wc + (cn);
+   return make_edrpou();
 }
 
 function make_dem_index(dob) {

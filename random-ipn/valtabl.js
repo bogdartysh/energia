@@ -54,7 +54,11 @@ class ValuesTable extends React.Component {
   render() {
     return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("table", {
       className: "table table-striped thead-dark"
-    }, /*#__PURE__*/React.createElement("colgroup", null, /*#__PURE__*/React.createElement("col", null), /*#__PURE__*/React.createElement("col", null), /*#__PURE__*/React.createElement("col", {
+    }, /*#__PURE__*/React.createElement("colgroup", null, /*#__PURE__*/React.createElement("col", {
+      style: {
+        width: "15%"
+      }
+    }), /*#__PURE__*/React.createElement("col", null), /*#__PURE__*/React.createElement("col", {
       style: {
         width: "33%"
       }
