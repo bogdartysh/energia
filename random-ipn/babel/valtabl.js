@@ -2,6 +2,8 @@
 function get_random_state() {
     let dob = new Date((Date.now() - 18*365*24*60*60*1000)*Math.random());
     let ipn = make_taxcode_fiz(dob);
+    let idx_name = Math.floor(Math.random()*names["ім'я"][get_sex(ipn)].length);
+    let idx_lastname = Math.floor(Math.random()*names["прізвище"][get_sex(ipn)].length);
 
     return {
         "bank-iban": make_iban(),
@@ -21,9 +23,11 @@ function get_random_state() {
         "contactna-telefon": "+380" + make_digits(9),
         "zagalna-data-narodgenia": dob.toISOString().substr(0,10),
         "zagalna-demindex": make_dem_index(dob),
-        "zagalna-firstname-ukr": rnd_arr_element(names["ім'я"][get_sex(ipn)]),
+        "zagalna-firstname-ukr": names["ім'я"][get_sex(ipn)][idx_name],
+         "zagalna-firstname-lat": names["ім'я-lat"][get_sex(ipn)][idx_name],
         "zagalna-secondname-ukr": rnd_arr_element(names["по-батькові"][get_sex(ipn)]),
-        "zagalna-lastname-ukr": rnd_arr_element(names["прізвище"][get_sex(ipn)]),
+        "zagalna-lastname-ukr": names["прізвище"][get_sex(ipn)][idx_lastname],
+        "zagalna-lastname-lat": names["прізвище-lat"][get_sex(ipn)][idx_lastname],
         "zagalna-vaga": 50 + Math.round(100 * Math.random()),
         "zagalna-stat": get_sex(ipn),
         "zagalna-zrist": 150 + Math.round(50 * Math.random()),
@@ -88,6 +92,11 @@ class ValuesTable extends React.Component {
                         </tr>
                         <tr>
                             <td>загальна інфо</td>
+                            <td>ім'я (латиниця)</td>
+                            <td><span className="zagalna-firstname-ukr">{this.state["zagalna-firstname-lat"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>загальна інфо</td>
                             <td>по батькові</td>
                             <td><span className="zagalna-secondname-ukr">{this.state["zagalna-secondname-ukr"]}</span></td>
                         </tr>
@@ -95,6 +104,11 @@ class ValuesTable extends React.Component {
                             <td>загальна інфо</td>
                             <td>прізвище</td>
                             <td><span className="zagalna-lastname-ukr">{this.state["zagalna-lastname-ukr"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>загальна інфо</td>
+                            <td>прізвище (латиниця)</td>
+                            <td><span className="zagalna-lastname-ukr">{this.state["zagalna-lastname-lat"]}</span></td>
                         </tr>
                         <tr>
                             <td>загальна інфо</td>
