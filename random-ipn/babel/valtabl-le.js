@@ -32,7 +32,7 @@ function          getRandomState() {
                 return <div>
                     <table className="table table-striped thead-dark">
                         <colgroup>
-                            <col/>
+                            <col style={{width: "15%"}}/>
                             <col/>
                             <col style={{width: "33%"}}/>
                         </colgroup>
