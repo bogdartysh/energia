@@ -1,6 +1,6 @@
     
 function          getRandomState() {
-                let dob = new Date((Date.now() - 18*365*24*60*60*1000)*Math.random());
+                let dob = new Date(25*365*24*60*60*1000 + (Date.now() - 25*365*24*60*60*1000)*Math.random());
                 let edrpou = make_edrpou();
                 return {"bank-iban": make_iban(),
                   "contactna-telefon": "+380" + make_digits(9),
