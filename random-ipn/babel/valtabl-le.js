@@ -5,6 +5,7 @@ function          getRandomState() {
                   "contactna-telefon": "+380" + make_digits(9),
                   "email": make_alphas(3 + Math.random() * 20) + "@example.com",
                   "podatkova-kved": make_digits(2) +"." + make_digits(2),
+                  "podatkova-edrpou": make_edrpou(),
                   "propiska-zip": make_digits(5),
                   "zagalna-data-narodgenia": dob.toISOString().substr(0,10)
                 };
@@ -41,9 +42,14 @@ function          getRandomState() {
                         </tr>
                         </thead>
                         <tbody>
+                         <tr>
+                            <td>податкова інфо</td>
+                            <td>ЄДРПОУ</td>
+                            <td><span className="podatkova-edrpou">{this.state["podatkova-edrpou"]}</span></td>
+                        </tr>      
                         <tr>
                             <td>податкова інфо</td>
-                            <td>квед</td>
+                            <td>КВЕД</td>
                             <td><span className="podatkova-kved">{this.state["podatkova-kved"]}</span></td>
                         </tr>                        
                         <tr>
