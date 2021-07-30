@@ -56,9 +56,9 @@ function make_taxcode_fiz(dob) {
 }
 
 function make_edrpou() {
-   let wc = Math.trunc(Math.random() * 3) + make_digits(9-1-1);
+   let wc = Math.trunc(Math.random() * 3) + make_digits(8-1-1);
    let arr = wc.toString(10).replace(/\D/g, '0').split('').map(Number);
-   let cn = (arr[0]*1+arr[2]*2+arr[3]*3+arr[4]*4+arr[5]*5+arr[6]*6+arr[7]*7)%11;
+   let cn = (arr[0]*1+arr[1]*2+arr[2]*3+arr[3]*4+arr[4]*5+arr[5]*6+arr[6]*7)%11;
    if (cn < 10) return wc + (cn);
    return make_edrpou();
 }
