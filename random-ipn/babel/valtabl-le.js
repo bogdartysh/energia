@@ -8,6 +8,7 @@ function          getRandomState() {
                   "podatkova-kved": make_digits(2) +"." + make_digits(2),
                   "podatkova-edrpou": edrpou,
                   "podatkova-pdv": edrpou.substring(0, 7) + make_digits(12-7),
+                  "propiska-address": make_legal_address(),
                   "propiska-zip": make_digits(5),
                   "zagalna-data-narodgenia": dob.toISOString().substr(0,10)
                 };
@@ -73,6 +74,12 @@ function          getRandomState() {
                             <td>контактна інфо</td>
                             <td>email</td>
                             <td><span className="contactna-email">{this.state["email"]}</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>місце реєстрації</td>
+                            <td>поштовий aдреса</td>
+                            <td><span className="propiska-addres">{this.state["propiska-address"]}</span></td>
                         </tr>
                         <tr>
                             <td>місце реєстрації</td>
