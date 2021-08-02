@@ -18,6 +18,7 @@ function get_random_state() {
     "podatkova-grupa-spd": 1 + Math.round(2 * Math.random()),
     "pensiinyi-nomer-soc-strah": make_digits(10),
     "podatkova-taxcode": ipn,
+    "propiska-address": make_legal_address(),
     "propiska-zip": make_digits(5),
     "prozhyvania-zip": make_digits(5),
     "contactna-telefon": "+380" + make_digits(9),
@@ -110,11 +111,11 @@ class ValuesTable extends React.Component {
       className: "zakordonnyi-data-organ-vydachi"
     }, this.state["zakordonnyi-data-organ-vydachi"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u0430\u0441\u043F\u043E\u0440\u0442 \u0434\u043B\u044F \u0432\u0438\u0457\u0437\u0434\u0443 \u0437\u0430\u043A\u043E\u0440\u0434\u043E\u043D"), /*#__PURE__*/React.createElement("td", null, "\u043C\u0456\u0441\u0446\u0435 \u0432\u0438\u0434\u0430\u0447\u0456"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "zakordonnyi-data-misce-vydachi"
-    }, this.state["zakordonnyi-data-misce-vydachi"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043C\u0456\u0441\u0446\u0435 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457"), /*#__PURE__*/React.createElement("td", null, "\u043F\u043E\u0448\u0442\u043E\u0432\u0438\u0439 \u0456\u043D\u0434\u0435\u043A\u0441"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+    }, this.state["zakordonnyi-data-misce-vydachi"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043C\u0456\u0441\u0446\u0435 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457"), /*#__PURE__*/React.createElement("td", null, "\u043F\u043E\u0448\u0442\u043E\u0432\u0438\u0439 a\u0434\u0440\u0435\u0441\u0430"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "propiska-addres"
+    }, this.state["propiska-address"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043C\u0456\u0441\u0446\u0435 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457"), /*#__PURE__*/React.createElement("td", null, "\u043F\u043E\u0448\u0442\u043E\u0432\u0438\u0439 \u0456\u043D\u0434\u0435\u043A\u0441"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "propiska-zip"
-    }, this.state["propiska-zip"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043C\u0456\u0441\u0446\u0435 \u043F\u0440\u043E\u0436\u0438\u0432\u0430\u043D\u043D\u044F"), /*#__PURE__*/React.createElement("td", null, "\u043F\u043E\u0448\u0442\u043E\u0432\u0438\u0439 \u0456\u043D\u0434\u0435\u043A\u0441"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
-      className: "prozhyvania-zip"
-    }, this.state["prozhyvania-zip"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u0435\u043D\u0441\u0456\u0439\u043D\u0430/\u0441\u043E\u0446 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u043D\u043E\u043C\u0435\u0440 \u0441\u043E\u0446\u0456\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0441\u0442\u0440\u0430\u0445\u0443\u0432\u0430\u043D\u043D\u044F"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+    }, this.state["propiska-zip"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u0435\u043D\u0441\u0456\u0439\u043D\u0430/\u0441\u043E\u0446 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u043D\u043E\u043C\u0435\u0440 \u0441\u043E\u0446\u0456\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0441\u0442\u0440\u0430\u0445\u0443\u0432\u0430\u043D\u043D\u044F"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "pensiinyi-nomer-soc-strah"
     }, this.state["pensiinyi-nomer-soc-strah"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u043B\u0430\u0442\u0456\u0436\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "IBAN"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "bank-iban"
