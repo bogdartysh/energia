@@ -83,7 +83,8 @@ function get_app_number() {
 }
 
 function get_house_number() {
-  return "буд. " + Math.round(1 + Math.random() * 100) + (Math.random() > 0.8)? ('-' + makernd('АБВГДЕЖЗ', length)) : '';
+  let house_letter = ((Math.random() > 0.8)? ('-' + makernd('АБВГДЕЖЗ', length)) : '');
+  return "буд. " + Math.round(1 + Math.random() * 100) + house_letter;
 }
 
 function get_street() {
@@ -122,5 +123,5 @@ function rnd_arr_element(items) {
 }
 
 function make_postal_address() {
-  return get_city() +", "+ get_street() +", " + get_house_number() +", " + ((Math.random()> 0.5)? (get_app_number(): "");
+  return get_city() +", "+ get_street() +", " + get_house_number()  + ((Math.random()> 0.5)? (", " + get_app_number()): "");
 }
