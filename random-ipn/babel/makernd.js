@@ -88,8 +88,7 @@ function get_house_number() {
 }
 
 function get_street() {
-   const streets = ["Артюшенків", "Кузьміних", "Кононенків", "Сарим-Сакова", "Рутковських", "Потоцьких" ];  
-   return "вул. " + rnd_arr_element(streets);  
+   return rnd_arr_element(["вул.", "просп."]) + " " + rnd_arr_element(["Девлета", "Гераїв", "Хаджі", "Менглі", "Сахіба", "Бахадира", "Ісляма", "Фетіх", "Шагіна", "Арслана", "Капланів" ]);
 }
 
 function get_city() {
