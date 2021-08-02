@@ -77,9 +77,30 @@ function make_data_vydachi() {
     return dd + " "+ mm + " " + dob.getFullYear().toString();
 }
 
+function get_rnd_elem(arr) {
+  return arr[Math.round(Math.random() * arr.length) % arr.length];  
+}
+
+function get_app_number() {
+ return 'кв. ' + Math.round(1 + Math.random () * 100); 
+}
+
+function get_house_number() {
+  return "буд. " + Math.round(1 + Math.random() * 100) + (Math.random() > 0.8)? ('-' + makernd('АБВГДЕЖЗ', length)) : '';
+}
+
+function get_street() {
+   const streets = ["Артюшенків", "Кузьміних", "Кононенків", "Сарим-Сакова", "Рутковських", "Потоцьких" ];  
+   return "вул. " + get_rnd_elem(streets);  
+}
+
+function get_city() {
+    const cities = ["Київ", "Запоріжжя", "Львів", "Черкаси", "Вінниця"];
+    return "м. " + get_rnd_elem(cities);
+}
+
 function get_zakordon_place() {
-    const cities = ["КИЇВ", "ЗАПОРІЖЖЯ", "ЛЬВІВ", "ЧЕРКАСИ", "ВІННИЦЯ"];
-    return "М. " + cities[Math.round(Math.random() * cities.length) % cities.length] +"/UKR";
+    return get_city().toUpperCase() +"/UKR";
 }
 
 function get_id_place() {
