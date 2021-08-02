@@ -18,6 +18,7 @@ function get_random_state() {
         "podatkova-grupa-spd": 1 + Math.round(2 * Math.random()),
         "pensiinyi-nomer-soc-strah": make_digits(10),
         "podatkova-taxcode": ipn,
+        "propiska-address": make_legal_address(),
         "propiska-zip": make_digits(5),
         "prozhyvania-zip": make_digits(5),
         "contactna-telefon": "+380" + make_digits(9),
@@ -182,13 +183,13 @@ class ValuesTable extends React.Component {
                         </tr>
                         <tr>
                             <td>місце реєстрації</td>
-                            <td>поштовий індекс</td>
-                            <td><span className="propiska-zip">{this.state["propiska-zip"]}</span></td>
+                            <td>поштовий aдреса</td>
+                            <td><span className="propiska-addres">{this.state["propiska-address"]}</span></td>
                         </tr>
                         <tr>
-                            <td>місце проживання</td>
+                            <td>місце реєстрації</td>
                             <td>поштовий індекс</td>
-                            <td><span className="prozhyvania-zip">{this.state["prozhyvania-zip"]}</span></td>
+                            <td><span className="propiska-zip">{this.state["propiska-zip"]}</span></td>
                         </tr>
                         <tr>
                             <td>пенсійна/соц інфо</td>
