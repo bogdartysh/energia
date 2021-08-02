@@ -83,7 +83,7 @@ function get_app_number() {
 }
 
 function get_house_number() {
-  let house_letter = ((Math.random() > 0.8)? ('-' + makernd('АБВГДЕЖЗ', length)) : '');
+  let house_letter = ((Math.random() > 0.8)? ('-' + makernd('АБВГДЕЖЗ', 1)) : '');
   return "буд. " + Math.round(1 + Math.random() * 100) + house_letter;
 }
 
