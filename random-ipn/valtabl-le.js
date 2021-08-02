@@ -10,8 +10,10 @@ function getRandomState() {
     "podatkova-kved": make_digits(2) + "." + make_digits(2),
     "podatkova-edrpou": edrpou,
     "podatkova-pdv": edrpou.substring(0, 7) + make_digits(12 - 7),
+    "propiska-address": make_legal_address(),
     "propiska-zip": make_digits(5),
-    "zagalna-data-narodgenia": dob.toISOString().substr(0, 10)
+    "zagalna-data-narodgenia": dob.toISOString().substr(0, 10),
+    "zagalna-nazva": make_le_name()
   };
 }
 
@@ -49,11 +51,15 @@ class LEValuesTable extends React.Component {
       className: "podatkova-kved"
     }, this.state["podatkova-kved"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u0434\u0430\u0442\u0430 \u0441\u0442\u0432\u043E\u0440\u0435\u043D\u043D\u044F"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "zagalna-data-narodgenia"
-    }, this.state["zagalna-data-narodgenia"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u0442\u0435\u043B\u0435\u0444\u043E\u043D"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+    }, this.state["zagalna-data-narodgenia"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u0437\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u043D\u0430\u0437\u0432\u0430"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "zagalna-nazva"
+    }, this.state["zagalna-nazva"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "\u0442\u0435\u043B\u0435\u0444\u043E\u043D"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "contactna-telefon"
     }, this.state["contactna-telefon"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "email"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "contactna-email"
-    }, this.state["email"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043C\u0456\u0441\u0446\u0435 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457"), /*#__PURE__*/React.createElement("td", null, "\u043F\u043E\u0448\u0442\u043E\u0432\u0438\u0439 \u0456\u043D\u0434\u0435\u043A\u0441"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+    }, this.state["email"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043C\u0456\u0441\u0446\u0435 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457"), /*#__PURE__*/React.createElement("td", null, "\u043F\u043E\u0448\u0442\u043E\u0432\u0438\u0439 a\u0434\u0440\u0435\u0441\u0430"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "propiska-addres"
+    }, this.state["propiska-address"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043C\u0456\u0441\u0446\u0435 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457"), /*#__PURE__*/React.createElement("td", null, "\u043F\u043E\u0448\u0442\u043E\u0432\u0438\u0439 \u0456\u043D\u0434\u0435\u043A\u0441"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "propiska-zip"
     }, this.state["propiska-zip"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u043B\u0430\u0442\u0456\u0436\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "IBAN"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "bank-iban"
