@@ -10,7 +10,8 @@ function          getRandomState() {
                   "podatkova-pdv": edrpou.substring(0, 7) + make_digits(12-7),
                   "propiska-address": make_legal_address(),
                   "propiska-zip": make_digits(5),
-                  "zagalna-data-narodgenia": dob.toISOString().substr(0,10)
+                  "zagalna-data-narodgenia": dob.toISOString().substr(0,10),
+                  "zagalna-nazva" : make_le_name()
                 };
            };
 
@@ -64,6 +65,11 @@ function          getRandomState() {
                             <td>загальна інфо</td>
                             <td>дата створення</td>
                             <td><span className="zagalna-data-narodgenia">{this.state["zagalna-data-narodgenia"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>загальна інфо</td>
+                            <td>назва</td>
+                            <td><span className="zagalna-nazva">{this.state["zagalna-nazva"]}</span></td>
                         </tr>
                         <tr>
                             <td>контактна інфо</td>
