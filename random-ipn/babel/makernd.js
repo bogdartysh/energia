@@ -125,3 +125,13 @@ function rnd_arr_element(items) {
 function make_legal_address() {
   return get_city() +", "+ get_street() +", " + get_house_number()  + ((Math.random()> 0.5)? (", " + get_app_number()): "");
 }
+
+function make_le_name() {
+  let letype = rnd_arr_element(["ТОВ", "АТ", "ПАТ"]);
+  let fname = rnd_arr_element(["Інститут", "НДІ", "КБ", "НВК", "ОКБ"]);
+  let prename = rnd_arr_element(["прикладного", "сучасного", "величного"]);
+  let name = rnd_arr_element(["пароплавства", "картоплянства", "слугознавства", "народознавства", "рогів"]);
+  let sname = rnd_arr_element(["конокрадства", "копит", "наноекономіки", "діджиталізації"]);
+  let nameafter = rnd_arr_element(["ім. Л. Кравчука","ім. Л. Кучми","ім. В. Ющенко","ім. В. Януковича","ім. О. Турчинова","ім. П. Порошенко"])
+  return letype + '"' + fname + ' ' + prename + ' ' + name + ' і ' + sname + ' ' + nameafter + '"' ;
+}
