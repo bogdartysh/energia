@@ -77,9 +77,27 @@ function make_data_vydachi() {
     return dd + " "+ mm + " " + dob.getFullYear().toString();
 }
 
+
+function get_app_number() {
+ return 'кв. ' + Math.round(1 + Math.random () * 100); 
+}
+
+function get_house_number() {
+  let house_letter = ((Math.random() > 0.8)? ('-' + makernd('АБВГДЕЖЗ', 1)) : '');
+  return "буд. " + Math.round(1 + Math.random() * 100) + house_letter;
+}
+
+function get_street() {
+   return rnd_arr_element(["вул.", "просп."]) + " " + rnd_arr_element(["Девлета", "Гераїв", "Хаджі", "Менглі", "Сахіба", "Бахадира", "Ісляма", "Фетіх", "Шагіна", "Арслана", "Капланів" ]);
+}
+
+function get_city() {
+    const cities = ["Київ", "Запоріжжя", "Львів", "Черкаси", "Вінниця"];
+    return "м. " + rnd_arr_element(cities);
+}
+
 function get_zakordon_place() {
-    const cities = ["КИЇВ", "ЗАПОРІЖЖЯ", "ЛЬВІВ", "ЧЕРКАСИ", "ВІННИЦЯ"];
-    return "М. " + cities[Math.round(Math.random() * cities.length) % cities.length] +"/UKR";
+    return get_city().toUpperCase() +"/UKR";
 }
 
 function get_id_place() {
@@ -101,4 +119,18 @@ function make_iban() {
 
 function rnd_arr_element(items) {
    return items[Math.floor(Math.random()*items.length)];
+}
+
+function make_legal_address() {
+  return get_city() +", "+ get_street() +", " + get_house_number()  + ((Math.random()> 0.5)? (", " + get_app_number()): "");
+}
+
+function make_le_name() {
+  let letype = rnd_arr_element(["ТОВ", "АТ", "ПАТ"]);
+  let fname = rnd_arr_element(["Інститут", "НДІ", "КБ", "НВК", "ОКБ"]);
+  let prename = rnd_arr_element(["прикладного", "сучасного", "величного"]);
+  let name = rnd_arr_element(["пароплавства", "картоплянства", "слугознавства", "народознавства", "рогів"]);
+  let sname = rnd_arr_element(["конокрадства", "копит", "наноекономіки", "діджиталізації"]);
+  let nameafter = rnd_arr_element(["ім. Л. Кравчука","ім. Л. Кучми","ім. В. Ющенко","ім. О. Турчинова","ім. П. Порошенко"])
+  return letype + ' "' + fname + ' ' + prename + ' ' + name + ' і ' + sname + ' ' + nameafter + '"' ;
 }
