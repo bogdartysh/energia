@@ -75,7 +75,7 @@ class ValuesTable extends React.Component {
                         <tr>
                             <th>БЛОК</th>
                             <th>КЛЮЧ</th>
-                            <th>ЗНАЧЕННЯ <button type="submit" value='(ОНОВИТИ)'/></th>
+                            <th>ЗНАЧЕННЯ <input type="submit" value="(ОНОВИТИ)"/></th>
                         </tr>
                         </thead>
                         <tbody>
