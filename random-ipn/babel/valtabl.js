@@ -64,7 +64,8 @@ class ValuesTable extends React.Component {
             };
 
             render() {
-                return <div> <form onSubmit={this.nextRandomState}>
+                return <div> 
+                    <form onSubmit={this.nextRandomState}>
                     <table className="table table-striped thead-dark">
                         <colgroup>
                             <col style={{width: "15%"}}/>
@@ -228,7 +229,7 @@ class ValuesTable extends React.Component {
                     </table >
                     <p>
                        <label> потрібна дата народження (yyyy-mm-dd):        
-                       <input type="text" onChange={e => this.setNeededDob(e)} value={this.state['neededDob']} />
+                       <input type="text" onChange={this.setNeededDob} value={this.state['neededDob']} />
                        </label>
                     </p>
                   </form>
