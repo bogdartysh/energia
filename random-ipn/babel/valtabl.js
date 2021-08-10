@@ -58,8 +58,8 @@ class ValuesTable extends React.Component {
                      console.log(event);
                      dob = new Date(event.target.value);
                      this.setState(get_random_state(dob));
-                 } catch (error) {
-                     console.error(error);
+                 } catch (err) {
+                     console.error(err);
                  }
             }
 
