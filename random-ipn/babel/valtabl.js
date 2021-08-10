@@ -1,11 +1,12 @@
 
-function get_random_state() {
-    let dob = new Date((Date.now() - 18*365*24*60*60*1000)*Math.random());
+function get_random_state(neededDob) {
+    let dob = (neededDob === null)? new Date((Date.now() - 18*365*24*60*60*1000)*Math.random()): neededDob;
     let ipn = make_taxcode_fiz(dob);
     let idx_name = Math.floor(Math.random()*names["ім'я"][get_sex(ipn)].length);
     let idx_lastname = Math.floor(Math.random()*names["прізвище"][get_sex(ipn)].length);
 
     return {
+        "neededDob": neededDob,
         "bank-iban": make_iban(),
         "bank-mastercard": '5' + makernd('12345', 1) +  make_digits(16-2),
         "bank-visa": '4' + make_digits(16-1),
@@ -42,13 +43,20 @@ function get_random_state() {
 class ValuesTable extends React.Component {
             constructor() {
                 super();
-                this.state = get_random_state();
+                this.state = get_random_state(null);
                 this.nextRandomState = this.nextRandomState.bind(this);
+                this.setNeededDob = this.setNeededDob(this);
             };
 
             nextRandomState() {
+                let dob = this.state['neededDob'];
                 this.setState(get_random_state());
             };
+    
+            setNeededDob(event) {
+                 let dob = new Date(event.target.value);
+                 this.setState(get_random_state(dob));
+            }
 
             render() {
                 return <div>
@@ -213,6 +221,11 @@ class ValuesTable extends React.Component {
                         </tr>   
                         </tbody>
                     </table >
+                    <p>
+                       <label> потрібна дата народження (yyyy-mm-dd):        
+                       <input type="text" className="needed-dob" onChange={this.setNeededDob} value={this.state['neededDob']} />
+                       </label>
+                    </p>
                 </div>;
             }
         }
