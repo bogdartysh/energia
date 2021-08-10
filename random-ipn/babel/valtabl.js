@@ -56,12 +56,12 @@ class ValuesTable extends React.Component {
             setNeededDob(event) {                 
                  try { 
                      console.log(event);
-                     dob = new Date(event.target.value);
+                     let dob = new Date(event.target.value);
                      this.setState(get_random_state(dob));
                  } catch (err) {
                      console.warn(err);
                  }
-            }
+            };
 
             render() {
                 return <div> <form onSubmit={this.nextRandomState}>
@@ -228,7 +228,7 @@ class ValuesTable extends React.Component {
                     </table >
                     <p>
                        <label> потрібна дата народження (yyyy-mm-dd):        
-                       <input type="text" onChange={this.setNeededDob} value={this.state['neededDob']} />
+                       <input type="text" onChange={e => setNeededDob(e)} value={this.state['neededDob']} />
                        </label>
                     </p>
                   </form>
