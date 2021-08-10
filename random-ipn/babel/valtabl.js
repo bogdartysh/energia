@@ -228,7 +228,7 @@ class ValuesTable extends React.Component {
                     </table >
                     <p>
                        <label> потрібна дата народження (yyyy-mm-dd):        
-                       <input type="text" onChange={e => setNeededDob(e)} value={this.state['neededDob']} />
+                       <input type="text" onChange={e => this.setNeededDob(e)} value={this.state['neededDob']} />
                        </label>
                     </p>
                   </form>
