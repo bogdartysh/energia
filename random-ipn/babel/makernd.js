@@ -70,11 +70,15 @@ function make_dem_index(dob) {
     return di.substr(0, 8) + "-" + di.substr(8) + (cn.toString());
 }
 
-function make_data_vydachi() {
-    let dob = new Date(Math.round(Math.random() * (Date.now() - (2014-1970)*365*24*60*60*1000) + ((2014-1970)*365*24*60*60*1000)));
-    let dd = ((dob.getDate() < 10) ? '0' : '') + dob.getDate().toString()
-    let mm = ["СІЧ/JAN", "ЛЮТ/FEB", "БЕР/MAR", "КВІ/APR", "ТРА/MAY", "ЧЕР/JUN", "ЛИР/JUL", "СЕР/AUG", "ВЕР/SEP", "ЖОВ/OCT", "ЛИС/NOV", "ГРУ/DEC"][dob.getMonth()];
-    return dd + " "+ mm + " " + dob.getFullYear().toString();
+function make_data_vydachi(thedob) {
+    let my = Math.max((new Date()).getFullYear()-1, thedob.getFullYear()+1);
+    let date = new Date(Math.round(Math.random() * (Date.now() - (my - 1970)*365*24*60*60*1000) + ((my - 1970)*365*24*60*60*1000)));
+    if (thedob.getTime() > date.getTime())
+          return make_data_vydachi(thedob);
+    let dd = ((date.getDate() < 10) ? '0' : '') + date.getDate().toString()
+    let mm = ["СІЧ/JAN", "ЛЮТ/FEB", "БЕР/MAR", "КВІ/APR", "ТРА/MAY", "ЧЕР/JUN", "ЛИР/JUL", "СЕР/AUG", "ВЕР/SEP", "ЖОВ/OCT", "ЛИС/NOV", "ГРУ/DEC"][date.getMonth()];
+
+    return dd + " "+ mm + " " + date.getFullYear().toString();
 }
 
 

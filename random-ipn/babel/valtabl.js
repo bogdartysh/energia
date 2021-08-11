@@ -6,12 +6,12 @@ function get_random_state(neededDob) {
     let idx_lastname = Math.floor(Math.random()*names["прізвище"][get_sex(ipn)].length);
 
     return {
-        "neededDob": neededDob,
+        "neededDob": (neededDob === null)? null : neededDob.toISOString().substr(0,10),
         "bank-iban": make_iban(),
         "bank-mastercard": '5' + makernd('12345', 1) +  make_digits(16-2),
         "bank-visa": '4' + make_digits(16-1),
         "email": make_alphas(3 + Math.random() * 20) + "@example.com",
-        "id-card-data-vydachi": make_data_vydachi(),
+        "id-card-data-vydachi": make_data_vydachi(dob),
         "id-card-data-organ-vydachi": make_digits(4),
         "id-card-data-misce-vydachi": get_id_place(),
         "id-card-nomer": make_digits(13),
@@ -36,7 +36,7 @@ function get_random_state(neededDob) {
         "zakordonnyi-card-nomer": make_ALPHAS(2) + make_digits(6),
         "zakordonnyi-data-misce-vydachi": get_zakordon_place(),
         "zakordonnyi-data-organ-vydachi": make_digits(4),
-        "zakordonnyi-data-vydachi": make_data_vydachi()
+        "zakordonnyi-data-vydachi": make_data_vydachi(dob)
     };
 }   ;     
 
@@ -45,12 +45,20 @@ class ValuesTable extends React.Component {
                 super();
                 this.state = get_random_state(null);
                 this.nextRandomState = this.nextRandomState.bind(this);
-                this.setNeededDob = this.setNeededDob(this);
+                this.setNeededDob = this.setNeededDob.bind(this);
             };
 
             nextRandomState() {
-                let dob = this.state['neededDob'];
-                this.setState(get_random_state());
+                let neededDob = this.state['neededDob'];
+                try {
+                  if (neededDob === null)
+                    this.setState(get_random_state(null));
+                  else
+                    this.setState(get_random_state(new Date(neededDob)));
+                } catch (err) {
+                  console.log(err);
+                  this.setState(get_random_state(null));
+                }
             };
     
             setNeededDob(event) {                 
@@ -60,12 +68,12 @@ class ValuesTable extends React.Component {
                      this.setState(get_random_state(dob));
                  } catch (err) {
                      console.log(err);
+                     this.setState({'neededDob': event.target.value});
                  }
             };
 
             render() {
                 return <div> 
-                    <form onSubmit={this.nextRandomState}>
                     <table className="table table-striped thead-dark">
                         <colgroup>
                             <col style={{width: "15%"}}/>
@@ -76,7 +84,7 @@ class ValuesTable extends React.Component {
                         <tr>
                             <th>БЛОК</th>
                             <th>КЛЮЧ</th>
-                            <th>ЗНАЧЕННЯ <input type="submit" value="(ОНОВИТИ)"/></th>
+                            <th>ЗНАЧЕННЯ <button onClick={this.nextRandomState}>(ОНОВИТИ)</button></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -232,7 +240,6 @@ class ValuesTable extends React.Component {
                        <input type="text" onChange={this.setNeededDob} value={this.state['neededDob']} />
                        </label>
                     </p>
-                  </form>
                 </div>;
             }
         }
