@@ -85,7 +85,7 @@ function getRandomState() {
                         </tr>
                         <tr>
                             <td>контактна інфо</td>
-                            <td>email</td>
+                            <td>web</td>
                             <td><span className="contactna-web">{this.state["web"]}</span></td>
                         </tr>
                         <tr>
