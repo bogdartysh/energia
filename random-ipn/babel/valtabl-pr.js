@@ -5,7 +5,8 @@ function          getRandomState() {
                   "land-kadastr" : make_digits(12) + ':' +make_digits(3) +':' + make_digits(4),
                    "neruhome-reiestr-nomer": make_digits(13),
                     "neruhome-nomer-vlasnosti": make_digits(9),
-                    "neruhome-data-vlasnosti": toUkrDateTime(new Date(Math.round(Date.now() - 10*365*24*60*60*1000*Math.random())))
+                    "neruhome-data-vlasnosti": toUkrDateTime(new Date(Math.round(Date.now() - 10*365*24*60*60*1000*Math.random()))),
+                    "transport-vin": make_vin()
                 };
            };
 
@@ -59,6 +60,11 @@ function          getRandomState() {
                             <td>нерухоме майно</td>
                             <td>дата, час державної реєстрації</td>
                             <td><span className="neruhome-data-vlasnosti">{this.state["neruhome-data-vlasnosti"]}</span></td>
+                        </tr>
+                       <tr>
+                            <td>транспортний засіб</td>
+                            <td>ідентифікаційний номер транспортного засобу (VIN)</td>
+                            <td><span className="transport-vin">{this.state["transport-vin"]}</span></td>
                         </tr>
                         </tbody>
                     </table>
