@@ -141,9 +141,9 @@ function make_le_name() {
 
 function addLeadingZeros(value, length) {
    if (value > Math.pow(length))
-       return value;
-    return '00000000000000'.substr(0, length- Math.log10(value)-1)   + value;
-}
+       return value; 
+    return '0000000000000000'.substr(0, Math.min(length - 1, length - Math.ceil(Math.log10(value + 1))))   + value;
+
 
 function toUkrDateTime(date) {  
   return addLeadingZeros(date.getDate(), 2) + "." + addLeadingZeros(1 + date.getMonth(), 2) + "." + date.getFullYear() + " " + addLeadingZeros(date.getHours(), 2) +":"+ addLeadingZeros(date.getMinutes(),2) +":"+ addLeadingZeros(date.getSeconds(), 2);
