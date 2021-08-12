@@ -6,7 +6,8 @@ function          getRandomState() {
                    "neruhome-reiestr-nomer": make_digits(13),
                     "neruhome-nomer-vlasnosti": make_digits(9),
                     "neruhome-data-vlasnosti": toUkrDateTime(new Date(Math.round(Date.now() - 10*365*24*60*60*1000*Math.random()))),
-                    "transport-vin": make_vin()
+                    "transport-nomernyi-znak": make_transp_num(),
+                    "transport-vin": make_vin()                    
                 };
            };
 
@@ -65,6 +66,11 @@ function          getRandomState() {
                             <td>транспортний засіб</td>
                             <td>ідентифікаційний номер транспортного засобу (VIN)</td>
                             <td><span className="transport-vin">{this.state["transport-vin"]}</span></td>
+                        </tr>
+                        <tr>
+                            <td>транспортний засіб</td>
+                            <td>реєстраційний знак транспортного засобу</td>
+                            <td><span className="transport-nomernyi-znak">{this.state["transport-nomernyi-znak"]}</span></td>
                         </tr>
                         </tbody>
                     </table>
