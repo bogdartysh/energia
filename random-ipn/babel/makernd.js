@@ -142,3 +142,7 @@ function make_le_name() {
 function toUkrDateTime(date) {
   return date.getDate() + "." + (1 + date.getMonth()) + "." + date.getFullYear() + " " + date.getHours() +":"+ date.getMinutes() +":"+ date.getSeconds();
 }
+
+function make_vin() {
+  return  rnd_arr_element(['XTD', 'XTE', 'XTW', 'X1C', 'X7T', 'Y6J', 'Y6D', 'Y6J', 'Y6L', 'Y79']) + make_digits(3) + make_ALPHAS(1) + make_digits(2)+ make_ALPHAS(1) + make_digits(7);
+}
