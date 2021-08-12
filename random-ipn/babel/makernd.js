@@ -138,3 +138,7 @@ function make_le_name() {
   let nameafter = rnd_arr_element(["ім. Л. Кравчука","ім. Л. Кучми","ім. В. Ющенко","ім. О. Турчинова","ім. П. Порошенко"])
   return letype + ' "' + fname + ' ' + prename + ' ' + name + ' і ' + sname + ' ' + nameafter + '"' ;
 }
+
+function toUkrDateTime(date) {
+  return date.getDate() + "." + date.getMonth() + "." + date.getYear() + " " + date.getHours() +":"+ date.getMinutes() +":"+ date.getSeconds();
+}
