@@ -154,5 +154,5 @@ function make_vin() {
 }
 
 function make_transp_num()  {
-  return makernd('ABCEHIKMOPTX', 2) + ' ' + make_digit(4) + ' ' + makernd('ABCEHIKMOPTX', 2);
+  return makernd('ABCEHIKMOPTX', 2) + ' ' + make_digits(4) + ' ' + makernd('ABCEHIKMOPTX', 2);
 }
