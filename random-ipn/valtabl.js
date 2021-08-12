@@ -1,16 +1,17 @@
 "use strict";
 
-function get_random_state() {
-  let dob = new Date((Date.now() - 18 * 365 * 24 * 60 * 60 * 1000) * Math.random());
+function get_random_state(neededDob) {
+  let dob = neededDob === null ? new Date((Date.now() - 18 * 365 * 24 * 60 * 60 * 1000) * Math.random()) : neededDob;
   let ipn = make_taxcode_fiz(dob);
   let idx_name = Math.floor(Math.random() * names["ім'я"][get_sex(ipn)].length);
   let idx_lastname = Math.floor(Math.random() * names["прізвище"][get_sex(ipn)].length);
   return {
+    "neededDob": neededDob === null ? null : neededDob.toISOString().substr(0, 10),
     "bank-iban": make_iban(),
     "bank-mastercard": '5' + makernd('12345', 1) + make_digits(16 - 2),
     "bank-visa": '4' + make_digits(16 - 1),
     "email": make_alphas(3 + Math.random() * 20) + "@example.com",
-    "id-card-data-vydachi": make_data_vydachi(),
+    "id-card-data-vydachi": make_data_vydachi(dob),
     "id-card-data-organ-vydachi": make_digits(4),
     "id-card-data-misce-vydachi": get_id_place(),
     "id-card-nomer": make_digits(13),
@@ -35,7 +36,7 @@ function get_random_state() {
     "zakordonnyi-card-nomer": make_ALPHAS(2) + make_digits(6),
     "zakordonnyi-data-misce-vydachi": get_zakordon_place(),
     "zakordonnyi-data-organ-vydachi": make_digits(4),
-    "zakordonnyi-data-vydachi": make_data_vydachi()
+    "zakordonnyi-data-vydachi": make_data_vydachi(dob)
   };
 }
 
@@ -44,12 +45,33 @@ function get_random_state() {
 class ValuesTable extends React.Component {
   constructor() {
     super();
-    this.state = get_random_state();
+    this.state = get_random_state(null);
     this.nextRandomState = this.nextRandomState.bind(this);
+    this.setNeededDob = this.setNeededDob.bind(this);
   }
 
   nextRandomState() {
-    this.setState(get_random_state());
+    let neededDob = this.state['neededDob'];
+
+    try {
+      if (neededDob === null) this.setState(get_random_state(null));else this.setState(get_random_state(new Date(neededDob)));
+    } catch (err) {
+      console.log(err);
+      this.setState(get_random_state(null));
+    }
+  }
+
+  setNeededDob(event) {
+    try {
+      console.log(event);
+      let dob = new Date(event.target.value);
+      this.setState(get_random_state(dob));
+    } catch (err) {
+      console.log(err);
+      this.setState({
+        'neededDob': event.target.value
+      });
+    }
   }
 
   render() {
@@ -123,7 +145,11 @@ class ValuesTable extends React.Component {
       className: "bank-mastercard"
     }, this.state["bank-mastercard"]))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\u043F\u043B\u0430\u0442\u0456\u0436\u043D\u0430 \u0456\u043D\u0444\u043E"), /*#__PURE__*/React.createElement("td", null, "Visa"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "bank-visa"
-    }, this.state["bank-visa"]))))));
+    }, this.state["bank-visa"]))))), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("label", null, " \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u0430 \u0434\u0430\u0442\u0430 \u043D\u0430\u0440\u043E\u0434\u0436\u0435\u043D\u043D\u044F (yyyy-mm-dd):", /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      onChange: this.setNeededDob,
+      value: this.state['neededDob']
+    }))));
   }
 
 }
