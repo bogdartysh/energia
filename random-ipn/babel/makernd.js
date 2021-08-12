@@ -139,10 +139,20 @@ function make_le_name() {
   return letype + ' "' + fname + ' ' + prename + ' ' + name + ' і ' + sname + ' ' + nameafter + '"' ;
 }
 
-function toUkrDateTime(date) {
-  return date.getDate() + "." + (1 + date.getMonth()) + "." + date.getFullYear() + " " + date.getHours() +":"+ date.getMinutes() +":"+ date.getSeconds();
+function addLeadingZeros(value, length) {
+   if (value > Math.pow(length))
+       return value;
+    return '00000000000000'.substr(0, length- Math.log10(value)-1)   + value;
+}
+
+function toUkrDateTime(date) {  
+  return addLeadingZeros(date.getDate(), 2) + "." + addLeadingZeros(1 + date.getMonth(), 2) + "." + date.getFullYear() + " " + addLeadingZeros(date.getHours(), 2) +":"+ addLeadingZeros(date.getMinutes(),2) +":"+ addLeadingZeros(date.getSeconds(), 2);
 }
 
 function make_vin() {  
   return  rnd_arr_element(['XTD', 'XTE', 'XTW', 'X1C', 'X7T', 'Y6J', 'Y6D', 'Y6J', 'Y6L', 'Y79']) + make_digits(3) +  makernd('ABCDEFGHJKLMNPRSTUVWXYZ', 1) + make_digits(2)+ makernd('ABCDEFGHJKLMNPRSTUVWXY123456789', 1)  + make_digits(7);
+}
+
+function make_transp_num()  {
+  return makernd('ABCEHIKMOPTX', 2) + ' ' + make_digit(4) + ' ' + makernd('ABCEHIKMOPTX', 2);
 }
