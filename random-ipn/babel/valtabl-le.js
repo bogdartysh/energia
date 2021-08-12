@@ -1,10 +1,12 @@
     
-function          getRandomState() {
+function getRandomState() {
                 let dob = new Date(25*365*24*60*60*1000 + (Date.now() - 25*365*24*60*60*1000)*Math.random());
                 let edrpou = make_edrpou();
+                let web =  make_alphas(3 + Math.random() * 20) + ".example.com";
                 return {"bank-iban": make_iban(),
                   "contactna-telefon": "+380" + make_digits(9),
-                  "email": make_alphas(3 + Math.random() * 20) + "@example.com",
+                  "email": make_alphas(3 + Math.random() * 20) + "@" + web,
+                  "web": web,
                   "podatkova-kved": make_digits(2) +"." + make_digits(2),
                   "podatkova-edrpou": edrpou,
                   "podatkova-pdv": edrpou.substring(0, 7) + make_digits(12-7),
@@ -81,7 +83,11 @@ function          getRandomState() {
                             <td>email</td>
                             <td><span className="contactna-email">{this.state["email"]}</span></td>
                         </tr>
-
+                        <tr>
+                            <td>контактна інфо</td>
+                            <td>email</td>
+                            <td><span className="contactna-web">{this.state["web"]}</span></td>
+                        </tr>
                         <tr>
                             <td>місце реєстрації</td>
                             <td>поштовий aдреса</td>
